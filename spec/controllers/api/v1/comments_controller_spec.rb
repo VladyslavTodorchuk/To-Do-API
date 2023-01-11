@@ -1,4 +1,4 @@
-describe Api::V1::CommentsController, api: true, type: :controller do
+describe Api::V1::CommentsController, api: true do
   include Docs::V1::Comments::Api
   let(:user) { create(:user) }
   let(:project) { create(:project, user: user) }

@@ -1,4 +1,4 @@
-describe Api::V1::SessionsController, api: true, type: :controller do
+describe Api::V1::SessionsController, api: true do
   include Docs::V1::Sessions::Api
   let(:user) { create(:user) }
 

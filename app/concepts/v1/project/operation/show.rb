@@ -1,7 +1,12 @@
 class V1::Project::Operation::Show < Trailblazer::Operation
   step :find_project
+  fail :add_errors, fail_fast: true
 
   def find_project(ctx, params:, current_user:, **)
-    ctx[:project] = Project.find_by(id: params[:id], user_id: current_user.id)
+    ctx[:model] = current_user.projects.find_by(id: params[:id])
+  end
+
+  def add_errors(ctx, **)
+    ctx[:status] = :not_found
   end
 end

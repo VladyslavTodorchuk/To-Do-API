@@ -2,6 +2,8 @@ require:
   - rubocop-rspec
   - rubocop-rails
   - rubocop-performance
+AllCops:
+  NewCops: enable
 
 Rails/BulkChangeTable:
   Enabled: false
@@ -25,7 +27,6 @@ Rails/FilePath:
 
 Metrics/BlockLength:
   Max: 40
-  ExcludedMethods: ['describe']
 
 RSpec/ExampleLength:
   Max: 30

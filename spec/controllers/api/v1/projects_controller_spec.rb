@@ -1,4 +1,4 @@
-describe Api::V1::ProjectsController, api: true, type: :controller do
+describe Api::V1::ProjectsController, api: true do
   include Docs::V1::Projects::Api
   let(:user) { create(:user) }
   let(:project) { create(:project, user: user) }
@@ -103,7 +103,7 @@ describe Api::V1::ProjectsController, api: true, type: :controller do
 
       it 'has status' do
         put :update, params: { id: rand(0...12) }
-        expect(response).to have_http_status(:unprocessable_entity)
+        expect(response).to have_http_status(:not_found)
       end
     end
   end

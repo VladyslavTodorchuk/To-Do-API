@@ -10,7 +10,7 @@ class User < ApplicationRecord
   validates :username, allow_blank: false, length: { minimum: MIN_USERNAME_LENGTH, maximum: MAX_USERNAME_LENGTH }
   validates :password, allow_blank: false, length: { minimum: MIN_PASSWORD_LENGTH },
                        format: { with: PASSWORD_FORMAT,
-                                 message: 'Password length should be 8 characters, alphanumeric.' }
+                                 message: I18n.t('user.password_validates') }
 
   def valid_password?(param_password)
     password.match(param_password)

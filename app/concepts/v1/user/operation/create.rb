@@ -1,8 +1,7 @@
 class V1::User::Operation::Create < Trailblazer::Operation
-  step :validates_user?,
-       Output(Trailblazer::Activity::Left, :failure) => Path(end_id: 'End.failure', end_task: End(:with_failure)) do
-    step :user_exists
-  end
+  step :validates_user?
+  fail :user_exists, fail_fast: true
+
   step :create_user
   step :save_user
   step :generate_tokens

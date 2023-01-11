@@ -1,4 +1,4 @@
-describe Api::V1::UsersController, api: true, type: :controller do
+describe Api::V1::UsersController, api: true do
   include Docs::V1::Users::Api
   let(:user) { create(:user) }
 

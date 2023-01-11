@@ -1,6 +1,6 @@
 require 'active_support/core_ext/integer/time'
 
-Rails.application.routes.default_url_options[:host] = ENV['HOST_DOMAIN']
+Rails.application.routes.default_url_options[:host] = ENV.fetch('HOST_DOMAIN')
 
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.

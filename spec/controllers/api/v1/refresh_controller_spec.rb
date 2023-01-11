@@ -1,4 +1,4 @@
-describe Api::V1::RefreshController, api: true, type: :controller do
+describe Api::V1::RefreshController, api: true do
   include Docs::V1::Refresh::Api
   let(:user) { create(:user) }
   let(:refresh_token) do

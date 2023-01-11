@@ -20,3 +20,5 @@ en:
   errors:
     not_found: 'Not Found!'
     project_exist: 'Project Exists'
+  user:
+    password_validates: 'Password length should be 8 characters, alphanumeric.'

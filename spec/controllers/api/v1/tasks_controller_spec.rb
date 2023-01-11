@@ -1,4 +1,4 @@
-describe Api::V1::TasksController, api: true, type: :controller do
+describe Api::V1::TasksController, api: true do
   include Docs::V1::Tasks::Api
   let(:user) { create(:user) }
   let(:project) { create(:project, user: user) }
@@ -132,7 +132,7 @@ describe Api::V1::TasksController, api: true, type: :controller do
 
         it 'change completed', :dox do
           put :update, params: params
-          expect(task.reload.completed).to eq(true)
+          expect(task.reload.completed).to be(true)
         end
       end
     end

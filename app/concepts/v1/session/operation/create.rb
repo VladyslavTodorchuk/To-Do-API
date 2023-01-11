@@ -1,8 +1,7 @@
 class V1::Session::Operation::Create < Trailblazer::Operation
-  step :find_user,
-       Output(Trailblazer::Activity::Left, :failure) => Path(end_id: 'End.failure', end_task: End(:with_failure)) do
-    step :not_found
-  end
+  step :find_user
+  fail :not_found, fail_fast: true
+
   step :validates_password
   step :generate_tokens
 
@@ -10,6 +9,10 @@ class V1::Session::Operation::Create < Trailblazer::Operation
 
   def find_user(ctx, params:, **)
     ctx[:user] = User.find_by(username: params[:username])
+  end
+
+  def not_found(ctx, **)
+    ctx[:errors] = [I18n.t('errors.not_found')]
   end
 
   def validates_password(_ctx, params:, user:, **)
@@ -20,10 +23,6 @@ class V1::Session::Operation::Create < Trailblazer::Operation
     payload = { user_id: user.id }
     session = JWTSessions::Session.new(payload: payload, refresh_by_access_allowed: true)
     ctx[:data] = session.login
-  end
-
-  def not_found(ctx, **)
-    ctx[:errors] = [I18n.t('errors.not_found')]
   end
 
   def wrong_password(ctx, **)

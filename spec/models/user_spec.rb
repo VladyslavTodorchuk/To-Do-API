@@ -1,4 +1,4 @@
-describe User, type: :model do
+describe User do
   describe 'user' do
     context 'when validations' do
       it do
